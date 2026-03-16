@@ -4,7 +4,7 @@ project(Test2048 VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick Controls)
 
 qt_add_executable(appTest2048
     main.cpp
@@ -29,7 +29,7 @@ set_target_properties(appTest2048 PROPERTIES
 )
 
 target_link_libraries(appTest2048
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::Controls
 )
 
 include(GNUInstallDirs)
