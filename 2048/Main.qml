@@ -29,8 +29,8 @@ Window {
         // ── Connexion aux signaux C++ ────────────────────────────
         Connections {
             target: game
-            function onGameWon()  { overlayText.text = "Vous avez gagné ! 🎉"; gameOverlay.visible = true }
-            function onGameLost() { overlayText.text = "Game Over 😢";         gameOverlay.visible = true }
+            function onGameWon()  { overlayText.text = "Victoire !"; gameOverlay.visible = true }
+            function onGameLost() { overlayText.text = "Perdu !";         gameOverlay.visible = true }
         }
 
         // ── Titre et score ───────────────────────────────────────
@@ -60,7 +60,7 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: 120
                 height: 40
-                radius: 6
+                radius: 0
                 color: "#8f7a66"
 
                 Text {
@@ -89,7 +89,7 @@ Window {
             anchors.centerIn: parent
             anchors.verticalCenterOffset: 40
             color: "#bbada0"
-            radius: 10
+            radius: 0
 
             Grid {
                 anchors.centerIn: parent
@@ -102,7 +102,7 @@ Window {
                     Rectangle {
                         width: 95
                         height: 95
-                        radius: 6
+                        radius: 0
                         color: tileColor(modelData)
 
                         function tileColor(value) {
@@ -141,7 +141,7 @@ Window {
             visible: false
             anchors.fill: boardRect
             color: "#000000aa"  // noir semi-transparent
-            radius: 10
+            radius: 0
 
             Column {
                 anchors.centerIn: parent
@@ -160,7 +160,7 @@ Window {
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: 120
                     height: 40
-                    radius: 6
+                    radius: 0
                     color: "#8f7a66"
 
                     Text {
