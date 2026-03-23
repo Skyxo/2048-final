@@ -8,32 +8,32 @@ Window {
     visible: true
     title: "2048"
 
-    // ── Conteneur principal et couleur de fond ────────────────
+    // Conteneur principal et couleur de fond
     Rectangle {
         anchors.fill: parent
         color: "#faf8ef"
-        focus: true // C'est ce Rectangle qui écoute le clavier !
+        focus: true // Rectangle qui écoute le clavier !
 
-        // ── Capture des touches du clavier ───────────────────────
+        // Touches du clavier
         Keys.onPressed: function(event) {
             if (gameOverlay.visible) return
 
             switch(event.key) {
-                case Qt.Key_Left:  game.move("left");  break
-                case Qt.Key_Right: game.move("right"); break
-                case Qt.Key_Up:    game.move("up");    break
-                case Qt.Key_Down:  game.move("down");  break
+                case Qt.Key_Left:  game.mouvement("left");  break
+                case Qt.Key_Right: game.mouvement("right"); break
+                case Qt.Key_Up:    game.mouvement("up");    break
+                case Qt.Key_Down:  game.mouvement("down");  break
             }
         }
 
-        // ── Connexion aux signaux C++ ────────────────────────────
+        // Connexion aux signaux C++
         Connections {
             target: game
-            function onGameWon()  { overlayText.text = "Victoire !"; gameOverlay.visible = true }
-            function onGameLost() { overlayText.text = "Perdu !";         gameOverlay.visible = true }
+            function onVictoire()  { overlayText.text = "Victoire !"; gameOverlay.visible = true }
+            function onDefaite() { overlayText.text = "Perdu !";         gameOverlay.visible = true }
         }
 
-        // ── Titre et score ───────────────────────────────────────
+        // Titre et score
         Column {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
@@ -55,12 +55,11 @@ Window {
                 color: "#776e65"
             }
 
-            // ── Bouton Rejouer ───────────────────────────────────
+            // Bouton Rejouer
             Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: 120
                 height: 40
-                radius: 0
                 color: "#8f7a66"
 
                 Text {
@@ -74,14 +73,14 @@ Window {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        game.restart()
+                        game.recommencer()
                         gameOverlay.visible = false
                     }
                 }
             }
         }
 
-        // ── Grille ───────────────────────────────────────────────
+        // Grille
         Rectangle {
             id: boardRect
             width: 420
@@ -89,7 +88,6 @@ Window {
             anchors.centerIn: parent
             anchors.verticalCenterOffset: 40
             color: "#bbada0"
-            radius: 0
 
             Grid {
                 anchors.centerIn: parent
@@ -97,12 +95,11 @@ Window {
                 spacing: 10
 
                 Repeater {
-                    model: game.board
+                    model: game.plateau
 
                     Rectangle {
                         width: 95
                         height: 95
-                        radius: 0
                         color: tileColor(modelData)
 
                         function tileColor(value) {
@@ -135,13 +132,12 @@ Window {
             }
         }
 
-        // ── Overlay Game Over / Victoire ─────────────────────────
+        // Game Over / Victoire
         Rectangle {
             id: gameOverlay
             visible: false
             anchors.fill: boardRect
-            color: "#000000aa"  // noir semi-transparent
-            radius: 0
+            color: "#000000aa"
 
             Column {
                 anchors.centerIn: parent
@@ -160,7 +156,6 @@ Window {
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: 120
                     height: 40
-                    radius: 0
                     color: "#8f7a66"
 
                     Text {
@@ -174,7 +169,7 @@ Window {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            game.restart()
+                            game.recommencer()
                             gameOverlay.visible = false
                         }
                     }
@@ -182,5 +177,5 @@ Window {
             }
         }
 
-    } // <-- Fin du Rectangle principal
+    } // Fin du Rectangle principal
 }

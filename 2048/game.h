@@ -7,32 +7,32 @@
 class Game : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int score READ score NOTIFY scoreChanged)
-    Q_PROPERTY(QVector<int> board READ board NOTIFY boardChanged)
+    Q_PROPERTY(int score READ score NOTIFY actualisationScore)
+    Q_PROPERTY(QVector<int> plateau READ plateau NOTIFY actualisationPlateau)
 
 public:
     explicit Game(QObject *parent = nullptr);
 
     int score() const;
-    QVector<int> board() const;
+    QVector<int> plateau() const;
 
-    Q_INVOKABLE void move(const QString &direction);
-    Q_INVOKABLE void restart();
+    Q_INVOKABLE void mouvement(const QString &direction);
+    Q_INVOKABLE void recommencer();
 
 signals:
-    void scoreChanged();
-    void boardChanged();
-    void gameWon();
-    void gameLost();
+    void actualisationScore();
+    void actualisationPlateau();
+    void victoire();
+    void defaite();
 
 private:
-    int m_score;
-    int m_board[4][4];
+    int var_score;
+    int mat_plateau[4][4];
 
-    void addRandomTile();
-    bool moveLine(int line[4]);
-    bool canMove() const;
-    bool checkWin() const;
+    void tuileAleatoire();
+    bool mouvementLigne(int line[4]);
+    bool mouvementPossible() const;
+    bool checkVictoire() const;
 };
 
 #endif // GAME_H
