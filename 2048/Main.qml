@@ -105,6 +105,24 @@ Window {
                         radius: 6
                         color: tileColor(modelData)
 
+                        function tileColor(value) {
+                            switch(value) {
+                                case 0:    return "#cdc1b4"
+                                case 2:    return "#eee4da"
+                                case 4:    return "#ede0c8"
+                                case 8:    return "#f2b179"
+                                case 16:   return "#f59563"
+                                case 32:   return "#f67c5f"
+                                case 64:   return "#f65e3b"
+                                case 128:  return "#edcf72"
+                                case 256:  return "#edcc61"
+                                case 512:  return "#edc850"
+                                case 1024: return "#edc53f"
+                                case 2048: return "#edc22e"
+                                default:   return "#3c3a32"
+                            }
+                        }
+
                         Text {
                             anchors.centerIn: parent
                             text: modelData === 0 ? "" : modelData
@@ -164,23 +182,5 @@ Window {
             }
         }
 
-        // ── Fonction couleur des tuiles ──────────────────────────
-        function tileColor(value) {
-            switch(value) {
-                case 0:    return "#cdc1b4"
-                case 2:    return "#eee4da"
-                case 4:    return "#ede0c8"
-                case 8:    return "#f2b179"
-                case 16:   return "#f59563"
-                case 32:   return "#f67c5f"
-                case 64:   return "#f65e3b"
-                case 128:  return "#edcf72"
-                case 256:  return "#edcc61"
-                case 512:  return "#edc850"
-                case 1024: return "#edc53f"
-                case 2048: return "#edc22e"
-                default:   return "#3c3a32"
-            }
-        }
     } // <-- Fin du Rectangle principal
 }
