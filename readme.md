@@ -44,6 +44,8 @@ On a séparé la logique du jeu (classe `Game` en C++) de l'interface (QML). `Ga
 
 Tout ce qu'on avait prévu a été implémenté. Les déplacements dans les 4 directions, fusions, score, apparition de nouvelles tuiles, détection victoire (2048) et défaite (plus aucun mouvement possible), et le bouton rejouer.
 
+Nous avons repris les couleurs du jeu original pour un maximum de réalisme avec "html picker" sur internet.
+
 ---
 
 ## Difficultés rencontrées
@@ -56,3 +58,4 @@ Aussi, pour afficher le plateau à QML on retourne un `QVector<int>` aplati, ce 
 
 ## Captures d'écran
 
+<img width="633" height="749" alt="image" src="https://github.com/user-attachments/assets/88fc357c-1919-4e82-b947-87cce0d80ed1" />
