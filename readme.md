@@ -59,3 +59,6 @@ Aussi, pour afficher le plateau à QML on retourne un `QVector<int>` aplati, ce 
 ## Captures d'écran
 
 <img width="633" height="749" alt="image" src="https://github.com/user-attachments/assets/88fc357c-1919-4e82-b947-87cce0d80ed1" />
+
+<img width="620" height="751" alt="image" src="https://github.com/user-attachments/assets/53130f85-79a2-4ade-86da-e2f862c556ce" />
+
